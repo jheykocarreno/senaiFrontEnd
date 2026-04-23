@@ -125,7 +125,7 @@ if ((Number.isNaN(pesoUsuario))  || (Number.isNaN(alturaUsuario))){
         console.log("Voce é un Avatar");
 } else {
     const imc = pesoUsuario / Math.sqrt(alturaUsuario);
-
+    console.log(`Seu IMC ${imc.toFixed(2)}`);
     if (imc < 18.5){
         console.log("Abaixo do peso");
     } else if (((imc >= 18.5)  || (imc < 25))) {
