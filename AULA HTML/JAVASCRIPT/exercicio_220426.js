@@ -174,7 +174,7 @@
 // const usuario = "admin";
 // const senha = "1234";
 
-// const usuEnt = prompt("Inserir usuario: ").toLocaleLowerCase;
+// const usuEnt = prompt("Inserir usuario: ").toLowerCase;
 // const senEnt = prompt("Inserir senha: ");
 
 // if ((usuario == usuEnt) && (senha == senEnt)){
