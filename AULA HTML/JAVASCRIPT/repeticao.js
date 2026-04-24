@@ -1,4 +1,6 @@
+//---------------------------------------------------------------
 //WHILE - Em quanto a condião for TRUE, continua
+//---------------------------------------------------------------
 // 1- Contagem progresiva
 // let contador = 1;
 
@@ -57,7 +59,9 @@
 //     }
 // }
 
+//---------------------------------------------------------------
 //DO - WHILE
+//---------------------------------------------------------------
 // 1- 
 // let x = 10;
 // while(x < 5){
@@ -97,31 +101,60 @@
 //     }
 // } while (opcao !== "0");
 
-//3
-let numSecreto = Math.floor(Math.random() * 10) - 1;
+//3 - Palpite
+// let numSecreto = Math.floor(Math.random() * 10) - 1;
 
-if (numSecreto < 0){
-    numSecreto = 0;
-} else {
-    numSecreto +=2;
+// if (numSecreto < 0){
+//     numSecreto = 0;
+// } else {
+//     numSecreto +=2;
+// }
+
+// let palpite;
+// let tentativas = 0;
+
+// console.log("Adivinhe o numero entre 0 e 10")
+
+// do {
+//     palpite = Number(prompt("Seu palpite: "))
+//     tentativas++;
+
+//     if (Number.isNaN(palpite)){
+//         console.log("Digite um numero valido");
+//     } else if (palpite < numSecreto){
+//         console.log("Muito baixo! Tente novamente")
+//     } else if (palpite > numSecreto){
+//         console.log("Muito alto! Tente novamente");
+//     } else {
+//         console.log("Acertou!!!")
+//     }
+// } while (palpite != numSecreto);
+
+//---------------------------------------------------------------
+//FOR
+//---------------------------------------------------------------
+//1- TABUADA
+// const numero = Number(prompt("Tabuada de que numero: "));
+
+// if (Number.isNaN(numero)){
+//     console.log("Não é numero");
+// } else {
+//     for (let i=0; i<=10; i++){
+//         const resultado = numero * i;
+//         console.log(`${numero} * ${i} = ${resultado}`);
+//     }
+// }
+
+//2- NUMEROS PARES DE 0 A 20
+// for (let i =0; i <=20; i++){
+//     const ePar = i % 2;
+    
+//     if (ePar == 0) {
+//         console.log(`O numero ${i} é PAR`);
+//     }
+// }
+
+//3 - CONTAGEM REGRESIVA
+for(let i = 20; i>=0; i--){
+    console.log(`${i}`);
 }
-
-let palpite;
-let tentativas = 0;
-
-console.log("Adivinhe o numero entre 0 e 10")
-
-do {
-    palpite = Number(prompt("Seu palpite: "))
-    tentativas++;
-
-    if (Number.isNaN(palpite)){
-        console.log("Digite um numero valido");
-    } else if (palpite < numSecreto){
-        console.log("Muito baixo! Tente novamente")
-    } else if (palpite > numSecreto){
-        console.log("Muito alto! Tente novamente");
-    } else {
-        console.log("Acertou!!!")
-    }
-} while (palpite != numSecreto);
