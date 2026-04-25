@@ -155,6 +155,91 @@
 // }
 
 //3 - CONTAGEM REGRESIVA
-for(let i = 20; i>=0; i--){
-    console.log(`${i}`);
+// for(let i = 20; i>=0; i--){
+//     console.log(`${i}`);
+// }
+
+// const altura =5;
+
+// for(linha = 1; linha<=altura; linha++){
+//     let asteriscos = "";
+
+//     for (i=1; i<=linha; i++){
+//         asteriscos += "* ";
+//     }
+
+//     console.log(asteriscos);
+// }
+
+//---------------------------------------------------------------
+//ARRAY
+//---------------------------------------------------------------
+// const frutas=["Maça","Pera","Banana","Laranja","Uva"];
+
+// console.log(frutas[0]);
+
+// console.log(frutas.length);
+
+// // FOR OF - Ele pasa 1x1 no array
+// for (const fruta of frutas) {
+//     console.log(`- ${fruta}`);
+// }
+
+//1- Suma de todos os numero do array
+const numeros = [10, 25, 8, 42, 15, 7]
+let resultado=0;
+for (const numero of numeros){
+    resultado += numero;
+}
+console.log(resultado);
+
+//---------------------------------------------------------------
+// OBJETOS
+//---------------------------------------------------------------
+// const pessoa = {
+//     nome: "Jheyko",
+//     idade: 43,
+//     cidade: "São Paulo",
+//     prodissao: "Estudante"
+// };
+
+// console.log(pessoa.nome);
+// console.log(pessoa["idade"]);
+
+// //FOR IN - Ele pasa 1x1 em objetos
+// for (const chave in pessoa){
+
+// }
+
+// const aluno = {
+//     nome: "Maria Silva",
+//     matricula: "20223401",
+//     curso: "Desenvolvedor Web",
+//     nota: 9.5
+// };
+
+// console.log("Dados do aluno:\n");
+
+// for(const chave in aluno){
+//     const valor = aluno[chave];
+//     console.log(`${chave}: ${valor}`);
+// }
+
+//Estoque de produtos
+const estoque = {
+    "Notebook": 15,
+    "Mouse": 50,
+    "Teclado": 30,
+    "Monitor": 8,
+    "WebCam": 22
+}
+
+for(const chave in estoque){
+    const valor = estoque[chave];
+
+    if (valor < 10){
+        console.log(`${chave}: ${valor} ---> Abaixo de 10`);
+    } else {
+        console.log(`${chave}: ${valor}`);
+    }
 }
