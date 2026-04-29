@@ -157,12 +157,69 @@
 // 3. **Inverter um número:**
 //     - Peça um número ao usuário.
 //     - Use um `while` para inverter seus dígitos (exemplo: `123` → `321`).
-let numInt = Number(prompt("Digite um numero: "))
-let numString = String(numInt);
+// let numInt = Number(prompt("Digite um numero: "))
+// const aux = numInt;
 
-console.log(numInt);
-console.log(typeof(numInt));
-console.log(numString);
-console.log(typeof(numString));
+// let numString = String(numInt);
+// let numArray = numString;
 
-let numArray = numString;
+// let numArrayFinal='';
+// let i = numArray.length-1;
+// let j = 0;
+
+// while (i >= 0){
+//     numArrayFinal= numArrayFinal + numArray[i];
+//     console.log(numArrayFinal);
+//     i--;
+//     j++;
+// }
+
+// numString = String(numArrayFinal);
+// console.log(numString);
+// console.log(typeof(numString));
+
+// let numFinal = Number(numString);
+// console.log(numFinal);
+// console.log(typeof(numFinal));
+
+// console.log(`O numero invertido do numero ${aux} é ${numFinal}`);
+
+// //----------------------------------
+
+// let entrada = prompt("Digite um número para inverter: ");
+// const aux2 = entrada;
+
+// let listaDigitos = String(entrada).split(''); //creamos um array STRING como cada digito
+// let invertido = ""; 
+// let ind = listaDigitos.length - 1; 
+
+// while (ind >= 0) {
+//     invertido = invertido + listaDigitos[ind];
+//     ind--;
+// }
+
+// let invertidoInt = Number(invertido);
+// console.log(`O número invertido do numero ${aux2} é: ${invertidoInt}`);
+// console.log(typeof(invertidoInt));
+
+
+
+// 4. **Números perfeitos de 1 a 1000:**
+//     - Um número perfeito é aquele cuja soma de seus divisores (excluindo ele mesmo) é igual ao próprio número.
+//     - Exemplo: `6` → `1 + 2 + 3 = 6`.
+//     - Use um `for` aninhado para encontrar e exibir esses números até `1000`.
+for (let enteiro = 1; enteiro <= 1000; enteiro++) {
+    let somaDivisor = 0;
+
+    for (let i = 1; i < enteiro; i++) {
+        //console.log(i);
+        if (enteiro % i === 0) {
+            //console.log(`numero ${enteiro} div ${i}`)
+            somaDivisor += i;
+        } 
+    }
+
+    if (somaDivisor === enteiro) {
+        console.log(`${enteiro} é um número perfeito!`);
+    }
+}
