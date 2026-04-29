@@ -186,12 +186,12 @@
 // }
 
 //1- Suma de todos os numero do array
-const numeros = [10, 25, 8, 42, 15, 7]
-let resultado=0;
-for (const numero of numeros){
-    resultado += numero;
-}
-console.log(resultado);
+// const numeros = [10, 25, 8, 42, 15, 7]
+// let resultado=0;
+// for (const numero of numeros){
+//     resultado += numero;
+// }
+// console.log(resultado);
 
 //---------------------------------------------------------------
 // OBJETOS
@@ -205,7 +205,7 @@ console.log(resultado);
 
 // console.log(pessoa.nome);
 // console.log(pessoa["idade"]);
-
+//---------------------------------------------------------------
 // //FOR IN - Ele pasa 1x1 em objetos
 // for (const chave in pessoa){
 
@@ -226,20 +226,87 @@ console.log(resultado);
 // }
 
 //Estoque de produtos
-const estoque = {
-    "Notebook": 15,
-    "Mouse": 50,
-    "Teclado": 30,
-    "Monitor": 8,
-    "WebCam": 22
-}
+// const estoque = {
+//     "Notebook": 15,
+//     "Mouse": 50,
+//     "Teclado": 30,
+//     "Monitor": 8,
+//     "WebCam": 22
+// }
 
-for(const chave in estoque){
-    const valor = estoque[chave];
+// for(const chave in estoque){
+//     const valor = estoque[chave];
 
-    if (valor < 10){
-        console.log(`${chave}: ${valor} ---> Abaixo de 10`);
-    } else {
-        console.log(`${chave}: ${valor}`);
+//     if (valor < 10){
+//         console.log(`${chave}: ${valor} ---> Abaixo de 10`);
+//     } else {
+//         console.log(`${chave}: ${valor}`);
+//     }
+// }
+
+//---------------------------------------------------------------
+//BREAK - Senha com limite de 3 tentativas
+// const senhaCorreta ="abc123";
+
+// const maxTentativas = 3;
+
+// for (let i=1; i<=maxTentativas; i++){
+//     const senha = prompt(`Tentativa ${i}/${maxTentativas} - Digite sua senha`);
+
+//     if(senhaCorreta === senha){
+//         console.log("Acesso liberado");
+//         break;
+//     } else {
+//         console.log("Senha incorreta");
+
+//         if (i===maxTentativas){
+//             console.log("Acesso bloqueado");
+//         }
+//     }
+// }
+//---------------------------------------------------------------
+//CONTINUE - Pula as seguintes instruções apos do Continue
+// for (let i = 1; i<=10; i++){
+//     if (i%2===0){
+//         continue;
+//     } 
+//     console.log(`${i}`);
+    
+// }
+
+// const alunos = [
+//     {nome: "Ana", nota: 8.5},
+//     {nome: "Bruno", nota: 5.0},
+//     {nome: "Carlos", nota: 9.0},
+//     {nome: "Diana", nota: 4.5},
+//     {nome: "Eduardo", nota: 7.5}
+// ];
+
+// console.log("Alunos aprovados:\n");
+
+// for (const aluno of alunos){
+//     if (aluno.nota < 7){
+//         continue;
+//     }
+
+//     console.log(`${aluno.nome}: ${aluno.nota}`);
+// }
+
+//---------------------------------------------------------------
+
+const frase = prompt("Digite uma frase");
+
+const vogais = "aeiouAEIOU";
+
+let contador = 0;
+let vogaisEncontrados=[];
+
+for (const letra of frase){
+    if (vogais.includes(letra)){
+        contador++;
+        vogaisEncontrados.push(letra);
     }
 }
+console.log(frase)
+console.log(`Vogais encontrados ${contador}`);
+console.log(vogaisEncontrados);
