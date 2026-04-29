@@ -115,8 +115,54 @@
 //---------------------------------------------------------------
 
 
-
+// Nível Avançado
 // 1. **Soma dos dígitos de um número:**
 //     - Peça ao usuário um número inteiro positivo.
 //     - Use um `while` para somar seus dígitos.
+// let numero = Number(prompt("Digite um numero para somar seus digitos: "));
+// let somaDigitos = 0;
+// const aux = numero;
 
+// if (Number.isNaN(numero)){
+//     console.log("O digitado não é um NUMERO")
+// } else {
+//     while (numero > 0){
+//         let digitoFinal = numero % 10;
+//         somaDigitos += digitoFinal;
+//         numero = Math.floor(numero / 10);
+//     }
+//     console.log(`A soma dos digitos do numero ${aux} é ${somaDigitos}`);
+// }
+
+
+
+// 2. **Fatorial de um número:**
+//     - Peça um número ao usuário.
+//     - Use um `for` ou `while` para calcular o fatorial desse número.
+// let numero = Number(prompt("Digite um numero para calcular seu Factorial: "));
+// let factorial = 1;
+
+// if (Number.isNaN(numero)){
+//     console.log("O digitado não é um NUMERO")
+// } else {
+//     for (i=1; i<=numero; i++){
+//         factorial *= i;
+//     }
+//     console.log(`O factorial do numero ${numero} é ${factorial}`)
+// }
+
+
+
+
+// 3. **Inverter um número:**
+//     - Peça um número ao usuário.
+//     - Use um `while` para inverter seus dígitos (exemplo: `123` → `321`).
+let numInt = Number(prompt("Digite um numero: "))
+let numString = String(numInt);
+
+console.log(numInt);
+console.log(typeof(numInt));
+console.log(numString);
+console.log(typeof(numString));
+
+let numArray = numString;
