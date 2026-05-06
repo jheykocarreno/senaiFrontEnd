@@ -1,6 +1,6 @@
 // #######################    Exercícios Map, Find, Filter e Reduce    #######################
  
-// ### **FILTER()**
+// //##########################     FILTER()     //##########################
 
 // 1. Dado o array `const notas = [4, 7, 9, 3, 10, 5];`, filtre apenas as notas maiores ou iguais a 7.
 const notas = [4, 7, 9, 3, 10, 5];
@@ -105,7 +105,71 @@ console.log(concatenar);
 // 3. Dado o array const numeros = [1, 2, 3, 4, 5];, use reduce para calcular a média.
 const numeros3 = [1, 2, 3, 4, 5];
 
-const media = numeros3.reduce((acc, elemento) => {
+const media = numeros3.reduce((acc, elemento, index, array) => {
     
     acc += elemento;
+
+    if (index === array.length - 1){
+        return acc / array.length;
+    }
+
+    return acc;
+},0 );
+
+console.log(media);
+
+//##########################    DESAFIOS (misturando funções)    ##########################
+
+// 1. Dado o array
+const livros = [
+  { titulo: "Dom Casmurro", paginas: 300 },
+  { titulo: "O Hobbit", paginas: 295 },
+  { titulo: "A Revolução dos Bichos", paginas: 112 }
+];
+
+//- Filtre apenas os livros com mais de 200 páginas.
+const livro200 =  livros.filter((elemento => {
+    return elemento.paginas > 200;
+}))
+console.log(livro200);
+
+//- Crie um array apenas com os títulos.
+const livroTitulo = livros.map((elemento => {
+    return elemento.titulo;
+}))
+console.log(livroTitulo);
+
+//- Calcule o total de páginas de todos os livros.
+const totalPaginas = livros.reduce((acc, elemento) => {
+    acc += elemento.paginas;
+    return acc;
+},0);
+console.log(totalPaginas);
+
+
+// 2. Dado o array
+const carrinho = [
+  { produto: "Notebook", preco: 2500 },
+  { produto: "Mouse", preco: 100 },
+  { produto: "Teclado", preco: 200 }
+];
+
+
+//- Use `map` para criar uma lista de strings no formato `"Produto: X - R$ Y"`.
+const listaString = carrinho.map((elemento) => {
+    return "Produto: " + elemento.produto + " - R$ " + elemento.preco;
 })
+console.log(listaString);
+
+//- Use `reduce` para calcular o valor total da compra.
+const totalCompra = carrinho.reduce((acc, elemento) => {
+    acc += elemento.preco;
+    return acc;
+},0);
+console.log(totalCompra)
+
+//- Use `find` para encontrar o produto chamado `"Mouse"`.
+const mouseFind = carrinho.find((elemento => {
+    return elemento.produto === "Mouse";
+}))
+console.log(mouseFind);
