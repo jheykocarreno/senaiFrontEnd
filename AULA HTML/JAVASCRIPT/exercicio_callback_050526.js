@@ -173,3 +173,11 @@ const mouseFind = carrinho.find((elemento => {
     return elemento.produto === "Mouse";
 }))
 console.log(mouseFind);
+
+
+
+const tenico = {
+    nome:"" ,
+    qtde: 0
+}
+const tecnicos[3];
