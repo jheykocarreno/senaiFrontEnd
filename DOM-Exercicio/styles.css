@@ -1,0 +1,269 @@
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        header {
+            background: #161b22;
+            padding: 18px 30px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        header h1 { font-size: 1.4rem; color: #e50914; }
+        header p  { font-size: 0.85rem; color: #8b949e; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+
+        .exercicio {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .exercicio-header {
+            background: #1f2937;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .numero {
+            background: #e50914;
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.85rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .exercicio-header h2 { font-size: 1rem; color: #f0f6fc; }
+
+        .conceito {
+            font-size: 0.75rem;
+            color: #58a6ff;
+            background: rgba(88,166,255,0.1);
+            border: 1px solid rgba(88,166,255,0.3);
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .exercicio-body { padding: 20px; }
+
+        .instrucao {
+            background: #0d1117;
+            border-left: 3px solid #e50914;
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .instrucao strong { color: #f0f6fc; display: block; margin-bottom: 4px; }
+
+        .area-exercicio {
+            background: #0d1117;
+            border: 1px solid #21262d;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        /* ── elementos usados nos exercícios ── */
+
+        .filme-card-ex {
+            background: #1f2937;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .filme-card-ex img {
+            width: 60px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .filme-card-ex h3 { font-size: 1rem; color: #f0f6fc; margin-bottom: 4px; }
+        .filme-card-ex p  { font-size: 0.8rem; color: #8b949e; }
+
+        .badge-ex {
+            display: inline-block;
+            background: #e50914;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+
+        .mini-lista-ex {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .item-lista-ex {
+            background: #1f2937;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .item-lista-ex:hover { background: #2d3748; }
+        .item-lista-ex.selecionado { border-color: #e50914; color: #e50914; }
+
+        input[type="text"] {
+            width: 100%;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 10px 14px;
+            color: #c9d1d9;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        input[type="text"]:focus { border-color: #58a6ff; }
+
+        button {
+            background: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 9px 18px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        button:hover { background: #c00812; }
+
+        button.secundario {
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+
+        button.secundario:hover { background: #2d3748; }
+
+        ul#lista-ex3 {
+            list-style: none;
+            margin-top: 14px;
+        }
+
+        ul#lista-ex3 li {
+            background: #1f2937;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul#lista-ex3 li button {
+            background: transparent;
+            color: #8b949e;
+            border: 1px solid #30363d;
+            font-size: 0.75rem;
+            margin-top: 0;
+            padding: 4px 10px;
+        }
+
+        ul#lista-ex3 li button:hover { color: #e50914; border-color: #e50914; }
+
+        .galeria-ex {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+
+        .card-galeria-ex {
+            background: #1f2937;
+            border: 2px solid #30363d;
+            border-radius: 6px;
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .card-galeria-ex img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+        }
+
+        .card-galeria-ex p {
+            padding: 6px 4px;
+            font-size: 0.7rem;
+            color: #8b949e;
+        }
+
+        .card-galeria-ex.oculto { display: none; }
+
+        .card-galeria-ex.favoritado { border-color: #e50914; }
+
+        .resultado-ex {
+            background: #0d1117;
+            border: 1px dashed #30363d;
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #8b949e;
+            min-height: 38px;
+            margin-top: 10px;
+        }
+
+        .dica {
+            background: rgba(255, 215, 0, 0.07);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #ffd700;
+            margin-top: 10px;
+        }
+
+        .dica strong { display: block; margin-bottom: 2px; }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: #484f58;
+            font-size: 0.8rem;
+            border-top: 1px solid #21262d;
+            margin-top: 20px;
+        }
+
+        .destaque-verde { border-color: #3fb950 !important; }
+        .card-favoritado-ex { border-color: #e50914 !important; box-shadow: 0 0 16px rgba(229,9,20,0.4); }
