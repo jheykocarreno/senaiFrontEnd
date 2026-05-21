@@ -10,6 +10,7 @@ function hl(seletor, classe, duracao = 2500, atraso = 0) {
         }, atraso + i * 200);
     });
 }
+/***************   Demo 1: Selecionando Elementos  *************************/
 
 // FUNÇÃO 1 — getElementById()
 function selecionarPorId() {
