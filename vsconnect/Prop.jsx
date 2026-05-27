@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function Saudacao(props) {
   return <h1>Ola, {props.nome}!</h1>;
 }
@@ -41,3 +43,15 @@ function Usuario({ nome, idade, cidade }) {
 }
 
 <Usuario nome="Jheykoo" idade={42} cidade="São Paulo" />;
+
+
+//Estado com arrays
+const [listaItens, setListaItens] = useState([]);
+
+function adicionarItem(novoItem) {
+  setListaItens([...listaItens, novoItem])    //3 puntos es para traer todo la informacion del array
+}
+
+function removerItens(intemParaRemover) {
+  setListaItens(listaItens.filter(item => item != intemParaRemover))
+}
