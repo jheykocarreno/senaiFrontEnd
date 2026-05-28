@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Saudacao(props) {
   return <h1>Ola, {props.nome}!</h1>;
@@ -29,7 +29,7 @@ function Botao(props) {
 
 //DESESTRUTURAÇAO
 function Saudacao2({ nome }) {
-  let nome = props.nome;            //esto es lo que hace cuando desestruturamos
+  let nome = props.nome; //esto es lo que hace cuando desestruturamos
 }
 
 function Usuario({ nome, idade, cidade }) {
@@ -44,14 +44,68 @@ function Usuario({ nome, idade, cidade }) {
 
 <Usuario nome="Jheykoo" idade={42} cidade="São Paulo" />;
 
-
 //Estado com arrays
 const [listaItens, setListaItens] = useState([]);
 
 function adicionarItem(novoItem) {
-  setListaItens([...listaItens, novoItem])    //3 puntos es para traer todo la informacion del array
+  setListaItens([...listaItens, novoItem]); //3 puntos es para traer todo la informacion del array
 }
 
+listaItens.push("Reavt");
+
 function removerItens(intemParaRemover) {
-  setListaItens(listaItens.filter(item => item != intemParaRemover))
+  setListaItens(listaItens.filter((item) => item != intemParaRemover));
+}
+
+import { useEffect } from "react";
+
+function meuComponente() {
+  useEffect(() => {
+    console.log("Componente carregado");
+  }, []);
+}
+
+import api from "../../utils/api";
+
+function ListaServicos() {
+  const [servicos, setServicos] = useState([]);
+
+  function buscarServicos() {
+    api
+      .get("servicos")
+      //http://localhost:3000/servicos
+
+      .then((response) => {
+        setServicos(response.data);
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+      });
+  }
+
+  useEffect(() => {
+    buscarServicos();
+  }, []);
+
+  return(
+    <ul>      //lista no ordenada
+      {servicos.map((servico, index) => (
+        <li key={index}>
+          {servico.nome}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function cadastrarUsuario(event) {
+  event.preventDefault();
+
+  const formData = new FormData();
+
+  formData.append("nome", nome);
+  formData.append("email", email);
+  formData.append("user_img", foto);
+
+  api.post("user", formData)
 }
