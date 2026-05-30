@@ -44,7 +44,7 @@ function Header() {
             aria-haspopup="true"
             onClick={mostrarMenu}
           >
-            <div className="barras"></div>    //barra do meio
+            <div className="barras"></div>
           </a>
 
           <img className="header_logo" src={imgLogo} alt="" />
@@ -62,9 +62,7 @@ function Header() {
               </svg>
             </Link>
 
-            <Link className="header_botao_login" to="/login">
-              login
-            </Link>
+            <Link className="header_botao_login" to="/login">login</Link>
           </nav>
         </div>
       </header>

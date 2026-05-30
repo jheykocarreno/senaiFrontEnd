@@ -1,13 +1,13 @@
 import React from "react"; //biblioteca REACT principal
 import ReactDOM from "react-dom/client"; //es un punto de entrada del paquete react-dom que contiene las APIs necesarias para renderizar componentes de React en el navegador
-import CadastroServico from "../pages/CadastroServico";
-import CadastroUsuario from "../pages/CadastroUsuario";
-import Home from "../pages/Home";
-import ListaDevs from "../pages/ListaDevs";
-import ListaServicos from "../pages/ListaServicos";
-import Login from "../pages/Login";
-import PerfilUsuario from "../pages/PerfilUsuario";
-import VisualizarServico from "../pages/VisualizarServico";
+import CadastroServico from "../src/pages/CadastroServico";
+import CadastroUsuario from "../src/pages/CadastroUsuario";
+import Home from "../src/pages/Home";
+import ListaDevs from "../src/pages/ListaDevs";
+import ListaServicos from "../src/pages/ListaServicos";
+import Login from "../src/pages/Login";
+import PerfilUsuario from "../src/pages/PerfilUsuario";
+import VisualizarServico from "../src/pages/VisualizarServico";
 
 import Header from "./components/Header";
 
