@@ -18,16 +18,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"; //Biblioteca pa
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Header/>
+      <Header />
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/cadastro/Servico" element={<CadastroServico/>}></Route>
-        <Route path="/cadastro/Usuario" element={<CadastroUsuario/>}></Route>
-        <Route path="/lista/Devs" element={<ListaDevs/>}></Route>
-        <Route path="/lista/Servicos" element={<ListaServicos/>}></Route>
-        <Route path="/login" element={<Login/>}></Route>
-        <Route path="/perfil/:idUsuario" element={<PerfilUsuario/>}></Route>
-        <Route path="/servico/:idServico" element={<VisualizarServico/>}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/lista/servicos" element={<ListaServicos />} />
+        <Route path="/lista/devs" element={<ListaDevs />} />
+        <Route path="/perfil/:idUsuario" element={<PerfilUsuario />} />
+        <Route path="/servico/:idServico" element={<VisualizarServico />} />
+        <Route path="/cadastrar/usuario" element={<CadastroUsuario />} />
+        <Route path="/cadastrar/servico" element={<CadastroServico />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

@@ -67,7 +67,7 @@ function ListaServicos() {
                                 name="campo-busca"
                                 id="busca"
                                 placeholder="Buscar serviços por tecnologia..."
-                                onChange={verficarCampoFiltro}/>
+                                onChange={verificarCampoFiltro}/>
 
                                 <button type="submit">Buscar</button>
                             </div>

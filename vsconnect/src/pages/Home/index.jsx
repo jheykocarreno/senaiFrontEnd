@@ -29,6 +29,7 @@ function Home() {
         console.log("Error", error);
       });
   }
+  
   useEffect(() => {
     listarServicos();
   }, []);
