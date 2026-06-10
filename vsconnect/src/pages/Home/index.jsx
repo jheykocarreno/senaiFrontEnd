@@ -21,7 +21,7 @@ function Home() {
       .get("servicos") //pega servicos do db.json
       .then((response) => {
         for (let i = 0; i < 2; i++) {
-          doisServicos.push(response.data[1]);
+          doisServicos.push(response.data[i]);
         }
         setListaServicos(doisServicos);
       })
