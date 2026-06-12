@@ -22,8 +22,9 @@ const request = async (url, options = {}) => {
 
     const response = await fetch(
         url,
-        ...options,
-        headers,
+        { ...options,
+        headers,}
+       
     );
 
     if (response.status === 204) {
@@ -42,33 +43,40 @@ const request = async (url, options = {}) => {
                 new Event("auth-change")
             );
         }
+
     }
-    
+
+
     if (!response.ok) {
+        
         const errorData = await response.json()
 
-        .catch(() => ({}))
+        .catch(() => ({}));
 
         throw new Error(
-            errorData.message || `ERro na requisição (Status: ${response.status})`
-        )
+            errorData.message || `Erro na requisição (Status: ${response.status})`
+        );
     }
 
     return response.json();
+   
 };
 
 export const api = {
+
     auth: {
-        login: (email, senha) => 
+
+        login: (email, senha) =>
             request("/api/auth/login", {
                 method: "POST",
-                body: JSON.stringify({email,senha}),
+                body: JSON.stringify({ email, senha }),
             }),
 
         cadastro: (nome, email, senha) =>
             request("/api/auth/cadastro", {
                 method: "POST",
-                body: JSON.stringify({nome, eail, senha}),
+                body: JSON.stringify({ nome, email, senha }),
             }),
-    }
+    },
+
 }
