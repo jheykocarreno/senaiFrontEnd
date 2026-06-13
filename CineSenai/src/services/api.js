@@ -1,3 +1,5 @@
+import { jsx } from "react/jsx-runtime";
+
 const BASE_URL = "";
 
 const getAuthHeaders = () => {
@@ -43,7 +45,6 @@ const request = async (url, options = {}) => {
                 new Event("auth-change")
             );
         }
-
     }
 
 
@@ -79,4 +80,58 @@ export const api = {
             }),
     },
 
+    filmes: {
+        listar: () => request("/api/filmes"),
+
+        buscarPorId: (id) => request(`/api/filmes/${id}`),
+        
+        criar: (filme) => request("/api/filmes", {
+            method: "POST",
+            body: JSON.stringify(filme),
+        }),
+
+        atualizar: (filme, id) => request(`/api/filmes/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(filme),
+        }),
+
+        deletar: (id) => request(`/api/filmes/${id}`, {
+            method: "DELETE",
+        }),
+    },
+
+    avaliacoes: {
+        listar: (filmeId) => request(`/api/filmes/${filmeId}/avaliacoes`, {
+            method: "GET",
+            body: JSON.stringify(id),
+        }),
+
+        criar: (filmeId, avaliacao) => request(`/api/filmes/${filmeId}/avaliacoes`, {
+            method: "POST",
+            body: JSON.stringify(avaliacao),
+        }),
+    },
+
+    admin: {
+        listarReservas: () => request("/api/admin/reservas"),
+
+        gerarRelatorio: () => request("/api/admin/relatorios"),
+
+        promoverUsuario: (id) => request(`/api/admin/usuarios/${id}/promover`, {
+            method: "PATCH",
+        })
+    }
+
+    favoritos: {
+        listar: () => request("/api/favoritos"),
+
+        adicionar: (filmeId) => request(`/api/favoritos/${filmeId}`, {
+            method: "POST",
+            body: JSON.stringify(filmeId),
+        }),
+
+        remover: (filmeId) => request(`/api/favoritos/${filmeId}`, {
+            method: "DELETE",
+        }),
+    }
 }
