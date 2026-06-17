@@ -56,6 +56,12 @@ export const Navbar = () => {
               <Link to="/admin/sessoes" className={`nav-link navbar-admin-link ${isActive('/admin/sessoes')}`}>
                 Sessões
               </Link>
+              <Link to="/admin/reservas" className={`nav-link navbar-admin-link ${isActive('/admin/reservas')}`}>
+                Reservas
+              </Link>
+              <Link to="/admin/usuarios" className={`nav-link navbar-admin-link ${isActive('/admin/usuarios')}`}>
+                Usuários
+              </Link>
             </div>
           )}
         </div>

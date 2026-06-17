@@ -89,6 +89,12 @@ export const Home = () => {
   */
   const [selectedGenre, setSelectedGenre] = useState('');
 
+  /*
+    Índice do filme em destaque
+    que está sendo exibido no banner.
+  */
+  const [activeIndex, setActiveIndex] = useState(0);
+
 
 
   // ===================================================================
@@ -116,6 +122,41 @@ export const Home = () => {
   useEffect(() => {
     carregarFilmes();
   }, []);
+
+
+
+  // ===================================================================
+  // CARROSSEL DO BANNER (troca automática a cada 6 segundos)
+  // ===================================================================
+
+  useEffect(() => {
+
+    /*
+      Apenas 5 primeiros filmes participam
+      do carrossel do banner.
+    */
+    const totalDestaques = Math.min(filmes.length, 5);
+
+    /*
+      Se houver 1 filme ou nenhum,
+      não há necessidade de trocar.
+    */
+    if (totalDestaques <= 1) {
+      return;
+    }
+
+    const intervalo = setInterval(() => {
+      setActiveIndex((indiceAtual) =>
+        (indiceAtual + 1) % totalDestaques
+      );
+    }, 6000);
+
+    /*
+      Limpa o intervalo quando o componente
+      é desmontado ou a lista de filmes muda.
+    */
+    return () => clearInterval(intervalo);
+  }, [filmes]);
 
 
 
@@ -226,10 +267,16 @@ export const Home = () => {
   // ===================================================================
 
   /*
-    Pega o primeiro filme da lista
-    para exibir no banner principal.
+    Pega os 5 primeiros filmes da lista
+    para participar do carrossel do banner.
   */
-  const featuredMovie = filmes[0];
+  const featuredMovies = filmes.slice(0, 5);
+
+  /*
+    Filme atualmente exibido no banner,
+    de acordo com o activeIndex.
+  */
+  const featuredMovie = featuredMovies[activeIndex];
 
 
 
@@ -251,6 +298,13 @@ export const Home = () => {
 
           <div
             className="featured-banner"
+
+            /*
+              A key muda junto com o filme exibido,
+              forçando o React a recriar o elemento
+              e disparar a animação de transição.
+            */
+            key={featuredMovie.id}
 
             /*
               Define a imagem de fundo do banner.
@@ -312,9 +366,9 @@ export const Home = () => {
                   }
                 </span>
 
-                {/* Link para sessões */}
+                {/* Link para sessões deste filme */}
                 <Link
-                  to="/sessoes"
+                  to={`/sessoes?filmeId=${featuredMovie.id}`}
                   className="btn btn-primary featured-cta"
                 >
                   Ver Sessões
@@ -323,6 +377,45 @@ export const Home = () => {
               </div>
 
             </div>
+
+
+
+            {/* ========================================================
+                DOTS DE NAVEGAÇÃO DO CARROSSEL
+            ======================================================== */}
+
+            {
+              featuredMovies.length > 1 && (
+
+                <div className="featured-dots">
+
+                  {
+                    featuredMovies.map((filme, index) => (
+
+                      <button
+                        key={filme.id}
+                        type="button"
+
+                        className={
+                          'featured-dot'
+                          + (index === activeIndex ? ' featured-dot--active' : '')
+                        }
+
+                        aria-label={`Mostrar destaque ${filme.titulo}`}
+
+                        /*
+                          Permite que o usuário troque
+                          o destaque manualmente.
+                        */
+                        onClick={() => setActiveIndex(index)}
+                      />
+
+                    ))
+                  }
+
+                </div>
+              )
+            }
 
           </div>
         )

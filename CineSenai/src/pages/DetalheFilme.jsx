@@ -242,6 +242,13 @@ export const DetalheFilme = () => {
               Ainda sem avaliações. Seja o primeiro!
             </p>
           )}
+
+          <Link
+            to={`/sessoes?filmeId=${filme.id}`}
+            className="btn btn-primary"
+          >
+            Ver Sessões e Comprar Ingresso
+          </Link>
         </div>
       </div>
 

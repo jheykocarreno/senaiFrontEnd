@@ -19,7 +19,8 @@ export const AdminFilmes = () => {
 
   const [titulo, setTitulo] = useState('');
   const [descricao, setDescricao] = useState('');
-  const [urlPoster, setUrlPoster] = useState('');
+  const [posterAtual, setPosterAtual] = useState('');
+  const [posterArquivo, setPosterArquivo] = useState(null);
   const [genero, setGenero] = useState('ACAO');
   const [duracaoMinutos, setDuracaoMinutos] = useState(120);
   const [saving, setSaving] = useState(false);
@@ -42,7 +43,7 @@ export const AdminFilmes = () => {
 
   const openAddModal = () => {
     setEditingFilme(null);
-    setTitulo(''); setDescricao(''); setUrlPoster('');
+    setTitulo(''); setDescricao(''); setPosterAtual(''); setPosterArquivo(null);
     setGenero('ACAO'); setDuracaoMinutos(120);
     setShowModal(true);
   };
@@ -51,7 +52,8 @@ export const AdminFilmes = () => {
     setEditingFilme(filme);
     setTitulo(filme.titulo || '');
     setDescricao(filme.descricao || '');
-    setUrlPoster(filme.urlPoster || '');
+    setPosterAtual(filme.urlPoster || '');
+    setPosterArquivo(null);
     setGenero(filme.genero || 'ACAO');
     setDuracaoMinutos(filme.duracaoMinutos || 120);
     setShowModal(true);
@@ -63,19 +65,35 @@ export const AdminFilmes = () => {
     if (duracaoMinutos < 1) { showToast('A duração deve ser maior que 0 minutos.', 'error'); return; }
 
     setSaving(true);
-    const payload = { titulo, descricao, urlPoster, genero, duracaoMinutos: parseInt(duracaoMinutos, 10) };
+    const payload = { titulo, descricao, genero, duracaoMinutos: parseInt(duracaoMinutos, 10) };
     try {
-      if (editingFilme) {
-        await api.filmes.atualizar(editingFilme.id, payload);
-        showToast('Filme atualizado com sucesso!', 'success');
-      } else {
-        await api.filmes.criar(payload);
-        showToast('Filme cadastrado com sucesso!', 'success');
+      const filmeSalvo = editingFilme
+        ? await api.filmes.atualizar(editingFilme.id, payload)
+        : await api.filmes.criar(payload);
+
+      if (posterArquivo) {
+        await api.filmes.uploadImagem(filmeSalvo.id, posterArquivo);
       }
+
+      showToast(editingFilme ? 'Filme atualizado com sucesso!' : 'Filme cadastrado com sucesso!', 'success');
       setShowModal(false);
       carregarFilmes();
     } catch (err) {
       showToast(err.message || 'Erro ao salvar o filme.', 'error');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleRemoverPoster = async () => {
+    if (!editingFilme) return;
+    setSaving(true);
+    try {
+      await api.filmes.removerImagem(editingFilme.id);
+      setPosterAtual('');
+      showToast('Pôster removido.', 'success');
+    } catch (err) {
+      showToast(err.message || 'Erro ao remover o pôster.', 'error');
     } finally {
       setSaving(false);
     }
@@ -185,9 +203,20 @@ export const AdminFilmes = () => {
                   value={duracaoMinutos} onChange={(e) => setDuracaoMinutos(e.target.value)} required disabled={saving} />
               </div>
               <div className="form-group">
-                <label htmlFor="modal-poster">URL do Pôster</label>
-                <input id="modal-poster" type="url" className="form-control" placeholder="https://exemplo.com/poster.jpg"
-                  value={urlPoster} onChange={(e) => setUrlPoster(e.target.value)} disabled={saving} />
+                <label htmlFor="modal-poster">Pôster</label>
+                {posterAtual && (
+                  <div className="admin-film-thumb" style={{ marginBottom: '0.5rem' }}>
+                    <img src={posterAtual} alt="Pôster atual" />
+                  </div>
+                )}
+                <input id="modal-poster" type="file" accept="image/*" className="form-control"
+                  onChange={(e) => setPosterArquivo(e.target.files[0] || null)} disabled={saving} />
+                {posterAtual && (
+                  <button type="button" onClick={handleRemoverPoster} className="btn btn-danger admin-btn-sm"
+                    style={{ marginTop: '0.5rem' }} disabled={saving}>
+                    Remover pôster atual
+                  </button>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="modal-descricao">Sinopse / Descrição</label>
