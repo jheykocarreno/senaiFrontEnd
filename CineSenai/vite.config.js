@@ -8,7 +8,8 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://cinema-api.us-east-1.elasticbeanstalk.com',
+        //target: 'http://cinema-api.us-east-1.elasticbeanstalk.com',
+        target: 'http://cinema-api-gustavo.us-east-1.elasticbeanstalk.com',
         changeOrigin: true,
         secure: false
       }
